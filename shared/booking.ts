@@ -7,6 +7,7 @@ export interface BookingPayload {
   name: string;
   phone: string;
   service: string;
+  servicePrice: string;
   problem: string;
   channel: string;
   telegram: string;
@@ -27,6 +28,7 @@ export function parseBooking(body: unknown): BookingPayload {
     name: text(b.name),
     phone: text(b.phone),
     service: text(b.service),
+    servicePrice: text(b.servicePrice),
     problem: text(b.problem).slice(0, 1000),
     channel: text(b.channel) || "Звонок",
     telegram: text(b.telegram),
@@ -47,7 +49,7 @@ export function formatBookingMessage(b: BookingPayload): string {
   return [
     "Новая заявка с сайта",
     `Авто: ${b.brand} ${b.model}${b.year ? ` (${b.year})` : ""}`,
-    `Услуга: ${b.service}`,
+    `Услуга: ${b.service}${b.servicePrice ? ` (ориентир: ${b.servicePrice})` : ""}`,
     when ? `Когда: ${when}` : "",
     `Клиент: ${b.name} · ${b.phone}`,
     `Связь: ${b.channel}${b.telegram ? ` (${b.telegram})` : ""}`,
