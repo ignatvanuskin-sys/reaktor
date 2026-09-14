@@ -81,10 +81,10 @@ for (const vp of viewports) {
       await page.screenshot({ path: path.join(OUT, `scrolled-${vp.name}.png`) });
     }
     r.checks.scrollOverflow = await overflowX(page);
-    r.checks.taps = await tapTargets(page, [".price-row button", ".hero-utilities a", ".menu-btn", ".channel", ".faq-list summary"]);
+    r.checks.taps = await tapTargets(page, [".price-row button", ".hero-utilities a", ".menu-btn", ".channel", ".faq-list summary", ".floating-menu-btn", ".floating-cta"]);
 
     // open booking via floating CTA
-    await fb.click();
+    await page.click(".floating-cta");
     await page.waitForSelector(".booking-card", { timeout: 5000 });
     await page.screenshot({ path: path.join(OUT, `book1-${vp.name}.png`) });
     const card = await page.$(".booking-card");
@@ -133,6 +133,16 @@ for (const vp of viewports) {
     await page.waitForSelector(".booking-success", { timeout: 10000 });
     await page.screenshot({ path: path.join(OUT, `success-${vp.name}.png`) });
     r.checks.successText = await page.evaluate(() => document.querySelector(".booking-success")?.innerText.slice(0, 220) ?? "MISSING");
+
+    // bottom burger opens the site menu
+    await page.getByRole("button", { name: "Вернуться на сайт" }).click();
+    await page.waitForTimeout(400);
+    await page.evaluate(() => window.scrollBy(0, 800));
+    await page.waitForTimeout(500);
+    await page.click(".floating-menu-btn");
+    await page.waitForTimeout(900);
+    r.checks.bottomBurgerOpensMenu = await page.evaluate(() => document.querySelector(".site-header nav")?.classList.contains("open") ?? false);
+    await page.screenshot({ path: path.join(OUT, `menu-${vp.name}.png`) });
   } catch (e) {
     r.checks.fatal = String(e).slice(0, 300);
     try { await page.screenshot({ path: path.join(OUT, `fatal-${vp.name}.png`) }); } catch {}

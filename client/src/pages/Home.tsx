@@ -162,7 +162,7 @@ export default function Home() {
     </main>
     <footer className="site-footer"><div className="container footer-inner"><a className="brand"><span className="brand-mark"><Zap size={17} fill="currentColor" /></span><span>РЕАКТОР<small>АВТОСЕРВИС · ПЕТРОПАВЛОВСК</small></span></a><span>© 2026 Реактор · Сервис и запчасти</span><div className="socials"><a aria-label="Instagram Реактора" href="https://instagram.com/reaktor.15kz" target="_blank" rel="noreferrer"><Instagram size={18}/></a><a aria-label="Facebook Реактора" href="https://facebook.com/reaktor.15kz" target="_blank" rel="noreferrer"><Facebook size={18}/></a></div></div></footer>
     {bookingOpen && <div className="modal-backdrop" onClick={(e) => e.target === e.currentTarget && setBookingOpen(false)}><div role="dialog" aria-modal="true" aria-label="Онлайн-запись в автосервис"><BookingForm onClose={() => setBookingOpen(false)}/></div></div>}
-    {showFloatingBook && !bookingOpen && <a className="floating-book" onClick={() => setBookingOpen(true)}><CalendarDays size={18}/> Записаться онлайн</a>}
+    {showFloatingBook && !bookingOpen && !menuOpen && <div className="floating-book"><button className="floating-menu-btn" aria-label="Открыть меню сайта" onClick={() => { setMenuOpen(true); window.scrollTo({ top: 0, behavior: "smooth" }); }}><Menu size={20}/></button><a className="floating-cta" onClick={() => setBookingOpen(true)}><CalendarDays size={18}/> Записаться онлайн</a></div>}
   </div>;
 }
 function ArrowUpRightIcon() { return <ArrowRight size={15}/>; }

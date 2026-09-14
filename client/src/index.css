@@ -34,7 +34,7 @@
   .site-header nav.open{position:fixed;inset:68px 0 0 0;top:68px;bottom:0;display:flex;flex-direction:column;justify-content:flex-start;padding:18px 16px;background:rgba(18,21,22,.98);z-index:12;overflow:auto}
   .site-header nav.open .mobile-menu-book{display:flex;align-items:center;justify-content:space-between;color:#fff;background:var(--orange);border:0;padding:15px 14px;margin-bottom:6px;min-height:50px;font-weight:700}
   .site-header nav.open a:not(.mobile-menu-book){padding:15px 3px;min-height:48px}
-  .floating-book{display:flex;position:fixed;z-index:20;bottom:0;left:0;right:0;transform:none;justify-content:center;align-items:center;gap:8px;min-height:58px;border-radius:0;padding:12px 18px;background:var(--orange);color:#fff;font-size:13px;font-weight:700;box-shadow:0 -5px 20px rgba(0,0,0,.22);animation:floatCtaMobile .22s cubic-bezier(.23,1,.32,1)}
+  .floating-book{display:flex;position:fixed;z-index:20;bottom:0;left:0;right:0;transform:none;align-items:stretch;gap:8px;min-height:64px;border-radius:0;padding:8px 10px;background:rgba(17,19,20,.96);color:#fff;box-shadow:0 -5px 20px rgba(0,0,0,.25);animation:floatCtaMobile .22s cubic-bezier(.23,1,.32,1)}.floating-menu-btn{flex:none;width:52px;min-height:48px;display:grid;place-items:center;background:rgba(255,255,255,.1);color:#fff;border-radius:3px}.floating-cta{flex:1;display:flex;justify-content:center;align-items:center;gap:8px;min-height:48px;border-radius:3px;background:var(--orange);color:#fff;font-size:13px;font-weight:700}.floating-cta svg{flex:none}
   .modal-backdrop{min-height:100svh;min-height:100dvh;align-items:end;padding:0;background:rgba(10,12,12,.78)}
   .booking-card,.booking-success{max-height:94svh;max-height:94dvh;border-radius:14px 14px 0 0;padding:20px 18px 18px}
   .booking-actions{padding-bottom:env(safe-area-inset-bottom, 0px)}
@@ -49,7 +49,7 @@
   .scroll-cue{display:none}
   .trust-heading{padding-top:17px}
   .trust-inner{padding-top:12px;padding-bottom:22px}
-  .floating-book{bottom:0;left:0;right:0;transform:none;border-radius:0;min-height:58px;justify-content:center;padding-bottom:calc(12px + env(safe-area-inset-bottom, 0px))}
+  .floating-book{min-height:64px;padding-bottom:calc(8px + env(safe-area-inset-bottom, 0px))}
 }
 
 @media(max-width:560px){
@@ -91,7 +91,7 @@
   body.modal-open{overflow:hidden}
   .site-header nav.open{height:calc(100dvh - 68px);max-height:calc(100dvh - 68px);min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:calc(24px + env(safe-area-inset-bottom, 0px))}
   .site-header nav.open a{flex:none}
-  .floating-book{min-height:58px;padding-bottom:calc(12px + env(safe-area-inset-bottom, 0px))}
+  .floating-book{min-height:64px;padding-bottom:calc(8px + env(safe-area-inset-bottom, 0px))}
   .map-card{width:100%;max-width:100%}.map-grid{width:100%;max-width:100%;inset:0}
 }
 .menu-btn:focus-visible,.site-header nav a:focus-visible,.socials a:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
