@@ -37,10 +37,10 @@ function App() {
     image.onload = reveal;
     image.onerror = reveal;
     const source = window.matchMedia("(max-width: 560px)").matches
-      ? "/manus-storage/reaktor-hero-640_a6829983.webp"
+      ? "/images/reaktor-hero-640_a6829983.webp"
       : window.matchMedia("(max-width: 960px)").matches
-        ? "/manus-storage/reaktor-hero-960_d30daf07.webp"
-        : "/manus-storage/reaktor-hero-1920_cf744d3a.webp";
+        ? "/images/reaktor-hero-960_d30daf07.webp"
+        : "/images/reaktor-hero-1920_cf744d3a.webp";
     image.src = source;
     if (image.complete) reveal();
     return () => { image.onload = null; image.onerror = null; };
