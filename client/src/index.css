@@ -101,3 +101,18 @@
 @keyframes submitSpin{to{transform:rotate(360deg)}}@keyframes successOrbit{0%{transform:scale(.65);opacity:.9}100%{transform:scale(1.35);opacity:0}}
 @media(max-width:560px){.booking-success h3{font-size:39px}.booking-success{padding-top:30px}.rating-lockup{display:inline-flex;margin-top:18px}.testimonial:hover{transform:none}.success-orbit{margin-bottom:16px}}
 @media(prefers-reduced-motion:reduce){.submit-spinner,.success-orbit:before,.success-orbit:after{animation:none!important}}
+
+/* Scroll-reveal + motion accents (transform/opacity only, cheap on mobile) */
+.reveal-on .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .6s cubic-bezier(.23,1,.32,1);transition-delay:var(--d,0s)}
+.reveal-on .reveal.in{opacity:1;transform:none}
+.modal-backdrop{animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.faq-list details[open] p{animation:faqIn .32s ease}
+@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.check-draw circle{stroke-dasharray:95;stroke-dashoffset:95;animation:drawStroke .55s ease-out forwards}
+.check-draw path{stroke-dasharray:24;stroke-dashoffset:24;animation:drawStroke .35s .5s ease-out forwards}
+@keyframes drawStroke{to{stroke-dashoffset:0}}
+.service-card button,.all-services button,.text-link{transition:gap .18s ease,color .18s ease}
+.service-card button:hover,.all-services button:hover,.text-link:hover{gap:12px}
+@media(max-width:560px){.reveal-on .reveal{transform:translateY(12px)}.service-card button:hover,.all-services button:hover,.text-link:hover{gap:8px}}
+@media(prefers-reduced-motion:reduce){.reveal-on .reveal{opacity:1;transform:none;transition:none}.modal-backdrop,.faq-list details[open] p,.check-draw circle,.check-draw path{animation:none!important}.check-draw circle,.check-draw path{stroke-dashoffset:0}}
